@@ -145,9 +145,13 @@ void runStudentTests3 (double values[], int length)
  * @param rows the number of rows in the matrix
  * @param columns the number of columns
  */
-void printMatrix (double **matrix, int rows, int columns)
-{
-    // TODO
+void printMatrix (double **matrix, int rows, int columns) {
+	for (int i = 0; i < rows; i++) {
+		for (int j = 0; j < columns; j++) {
+			std::cout << matrix[i][j] << " ";
+		}
+		std::cout << std::endl;
+	}
 }
 
 /** 
@@ -160,10 +164,12 @@ void printMatrix (double **matrix, int rows, int columns)
  */
 void getRow (double **matrix, int columns, int index, double row[])
 {
-    // Clean out completely the row 
-    std::memset(row, 0, columns*sizeof(double));
-
-    // TODO
+	// Clean out completely the row 
+	std::memset(row, 0, columns*sizeof(double));
+	
+	for (int j = 0; j < columns; j++) {
+		row[j] = matrix[index][j];
+	}
 }
 
 /** 
@@ -176,10 +182,12 @@ void getRow (double **matrix, int columns, int index, double row[])
  */
 void getColumn (double **matrix, int rows, int index, double column[])
 {
-    // Clean out completely the column 
-    std::memset(column, 0, rows*sizeof(double));
+	// Clean out completely the column 
+	std::memset(column, 0, rows*sizeof(double));
 
-    // TODO
+	for (int i = 0; i < rows; i++) {
+		column[i] = matrix[i][index];
+	}
 }
 
 /************* Additional tests **************/
@@ -189,7 +197,7 @@ void runStudentTests4 (double **matrix, int rows, int columns)
     std::cout << "--------------------------------------------------------------------------------" << std::endl
               << "Your own tests could print something here. See the runStudentTests4() function" << std::endl;
 
-    // You can insert any code here — it will be called in the demo mode of Exercise 4
+    //printMatrix(matrix, rows, columns);
 
     std::cout << "--------------------------------------------------------------------------------" << std::endl;
 }
@@ -207,9 +215,16 @@ void runStudentTests4 (double **matrix, int rows, int columns)
  */
 double computeCovariance(double values1[], double values2[], int length)
 {
-    // TODO
-    // Do not forget to replace this return by a correct one!
-    return 0;
+    double m1 = computeMean(values1, length);
+    double m2 = computeMean(values2, length);
+    
+    double s = 0;
+    
+    for (int k = 0; k < length; k++) {
+    	s += (values1[k] - m1)*(values2[k] - m2);
+    }
+    
+    return s/length;
 }
 
 /**
@@ -222,9 +237,7 @@ double computeCovariance(double values1[], double values2[], int length)
  */
 double computeCorrelation(double values1[], double values2[], int length)
 {
-    // TODO: Use computeCovariance() and functions implemented in Exercise 1 
-    // Do not forget to replace this return by a correct one!
-    return 0;
+	return computeCovariance(values1, values2, length) / (computeStandardDeviation(values1, length) * computeStandardDeviation(values2, length));
 }
 
 /************* Additional tests **************/
@@ -253,13 +266,20 @@ void runStudentTests5 (double values1[], double values2[], int length)
  */
 double **computeCovarianceMatrix (double **dataMatrix, int rows, int columns)
 {
-    // Initialise a square matrix
-    double **matrix = prepareMatrix(columns, columns);
-    // Prepare temporary storage for columns
-    double column1[rows], column2[rows];
+	// Initialise a square matrix
+	double **matrix = prepareMatrix(columns, columns);
+	// Prepare temporary storage for columns
+	double column1[rows], column2[rows];
 
-    // TODO
-    return matrix;
+	for (int i = 0; i < columns; i++) {
+		for (int j = 0; j < columns; j++) {
+			getColumn(dataMatrix, rows, i, column1);
+			getColumn(dataMatrix, rows, j, column2);
+			matrix[i][j] = computeCovariance(column1, column2, rows);
+		}
+	}
+	
+	return matrix;
 }
 
 /**
@@ -272,13 +292,20 @@ double **computeCovarianceMatrix (double **dataMatrix, int rows, int columns)
  */
 double **computeCorrelationMatrix (double **dataMatrix, int rows, int columns)
 {
-    // Initialise a square matrix
-    double **matrix = prepareMatrix(columns, columns);
-    // Prepare temporary storage for columns
-    double column1[rows], column2[rows];
+	// Initialise a square matrix
+	double **matrix = prepareMatrix(columns, columns);
+	// Prepare temporary storage for columns
+	double column1[rows], column2[rows];
 
-    // TODO
-    return matrix;
+	for (int i = 0; i < columns; i++) {
+		for (int j = 0; j < columns; j++) {
+			getColumn(dataMatrix, rows, i, column1);
+			getColumn(dataMatrix, rows, j, column2);
+			matrix[i][j] = computeCorrelation(column1, column2, rows);
+		}
+	}
+	
+	return matrix;
 }
 
 /************* Additional tests **************/
