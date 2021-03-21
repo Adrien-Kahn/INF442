@@ -36,5 +36,8 @@ test_backtracking: test_backtracking.cpp retrieval.hpp
 compare_search_algos: compare_search_algos.cpp retrieval.hpp
 	${CXX} ${CXXFLAGS} -O3  -o $@ $@.cpp 
 
+itest: retrieval.hpp itest.cpp
+	${CXX} ${CXXFLAGS} -o $@ $@.cpp 
+
 clean:
 	rm -rf *.o $(CTESTS) *.dSYM *~

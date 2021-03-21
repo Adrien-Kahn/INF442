@@ -92,13 +92,44 @@ int linear_scan(point q, int dim, point *P, int n) {
  * @param end the last index; the element P[end] is not considered
  * @return the median of the c coordinate
  */
+
+// Auxiliary function gets the index of the minimum of P along the axis c within the start-end range (end excluded)
+int minidx(point *P, int start, int end, int c) {
+	int idx = start;
+	for (int j = start; j < end; j++) {
+		if (P[j][c] < P[idx][c]) {
+		idx = j;
+		}
+	}
+	return idx;
+}
+
+
+// Auxiliary function that selection sorts P between start and end (excluded) along the axis c in place
+void sort(point *P, int start, int end, int c) {
+	for (int i = start; i < end; i++) {
+		int j = minidx(P, i, end, c);
+		std::swap(P[i],P[j]);
+	}
+}
+
+// Prints whether the array of points P is sorted along the axis c from start to end
+void isSorted(point *P, int start, int end, int c) {
+	for (int k = start; k < end - 1; k++) {
+		if (P[k][c] > P[k + 1][c]) {
+			std::cout << "Not sorted" << std::endl;
+			return;
+		}
+	}
+	std::cout << "Sorted" << std::endl;
+	return;
+}
+
+
 double compute_median(point *P, int start, int end, int c) {
-    // Exercise 3.1
-    double median = 0.0;
-
-    // TODO
-
-    return median;
+    sort(P, start, end, c);
+    isSorted(P, start, end, c);
+    return P[start + ((end - start)/2)][c];
 }
 
 /**
