@@ -134,12 +134,11 @@ double compute_median_unused(point *P, int start, int end, int c) {
 
 double compute_median(point *P, int start, int end, int c) {
     double a[end - start];
-    std::cout << "Hello there" << std::endl;
-    print_point(P[end - 1], c);
+    //print_point(P[end - 1], c);
     std::cout << "start: " << start << "    end: " << end << std::endl;
     if (end == 150) {
     	std::cout << "hallo" << std::endl;
-    	print_point(P[149], 1);
+    	print_point(P[93], 1);
     	std::cout << "end hallo" << std::endl;
     }
     int n = sizeof(a)/sizeof(a[0]);
