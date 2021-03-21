@@ -126,13 +126,13 @@ void isSorted(point *P, int start, int end, int c) {
 }
 
 
-double compute_median(point *P, int start, int end, int c) {
+double compute_median_unused(point *P, int start, int end, int c) {
     sort(P, start, end, c);
     isSorted(P, start, end, c);
     return P[start + ((end - start)/2)][c];
 }
 
-double compute_median_1(point *P, int start, int end, int c) {
+double compute_median(point *P, int start, int end, int c) {
     double a[end - start];
     std::cout << "Hello there" << std::endl;
     print_point(P[end - 1], c);
