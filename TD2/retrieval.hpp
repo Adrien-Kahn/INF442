@@ -132,6 +132,26 @@ double compute_median(point *P, int start, int end, int c) {
     return P[start + ((end - start)/2)][c];
 }
 
+double compute_median_1(point *P, int start, int end, int c) {
+    double a[end - start];
+    std::cout << "Hello there" << std::endl;
+    print_point(P[end - 1], c);
+    std::cout << "start: " << start << "    end: " << end << std::endl;
+    if (end == 150) {
+    	std::cout << "hallo" << std::endl;
+    	print_point(P[149], 1);
+    	std::cout << "end hallo" << std::endl;
+    }
+    int n = sizeof(a)/sizeof(a[0]);
+    for (int k = start; k < end; k++) {
+//    	std::cout << k << std::endl;
+    	a[k] = P[k][c];
+//    	std::cout << k << std::endl;
+    }
+    std::sort(a, a + n);
+    return a[start + ((end - start)/2)];
+}
+
 /**
  * Partitions the the array P wrt to its median value of a coordinate
  *

@@ -38,7 +38,7 @@ bool test_median(const std::string fname, bool verbose, const double eps) {
         //for (int k=0; k < dim ; k++) { std::cout << P[i][k] << " ";  } ; std::cout << " \n";
     }
 
-    for (int i = 0; i < 10; i++) {
+    for (int i = 0; i < 2; i++) {
         int s, e, c;
         double amedian, cmedian;  // actual and computed median;
         in >> s >> e >> c >> amedian;
