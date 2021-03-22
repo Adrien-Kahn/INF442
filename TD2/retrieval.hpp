@@ -126,7 +126,7 @@ void isSorted(point *P, int start, int end, int c) {
 }
 
 
-double compute_median_unused(point *P, int start, int end, int c) {
+double compute_median_test(point *P, int start, int end, int c) {
     sort(P, start, end, c);
     isSorted(P, start, end, c);
     return P[start + ((end - start)/2)][c];
