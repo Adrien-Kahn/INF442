@@ -134,21 +134,12 @@ double compute_median_unused(point *P, int start, int end, int c) {
 
 double compute_median(point *P, int start, int end, int c) {
     double a[end - start];
-    //print_point(P[end - 1], c);
-    std::cout << "start: " << start << "    end: " << end << std::endl;
-    if (end == 150) {
-    	std::cout << "hallo" << std::endl;
-    	print_point(P[93], 1);
-    	std::cout << "end hallo" << std::endl;
-    }
     int n = sizeof(a)/sizeof(a[0]);
-    for (int k = start; k < end; k++) {
-//    	std::cout << k << std::endl;
-    	a[k] = P[k][c];
-//    	std::cout << k << std::endl;
+    for (int k = 0; k < (end - start); k++) {
+    	a[k] = P[start + k][c];
     }
     std::sort(a, a + n);
-    return a[start + ((end - start)/2)];
+    return a[(end - start)/2];
 }
 
 /**
