@@ -165,9 +165,9 @@ int partition(point *P, int start, int end, int c, int dim) {
     // Exercise 3.2
     double m = compute_median(P, start, end, c);
     
-/*    std::cout << std::endl;
-    std::cout << "median: " << m << std::endl;
-*/    
+//    std::cout << std::endl;
+//    std::cout << "median: " << m << std::endl;
+    
     int idx = -1;  // this is where we store the index of the median
     
     // We find the last index corresponding to m between start and end
@@ -196,17 +196,21 @@ int partition(point *P, int start, int end, int c, int dim) {
     }
     
     // We place the median where it should be
-    if (smaller < end) std::swap(P[smaller], P[start]);
+    if (smaller < end) std::swap(P[smaller], P[start]); else smaller = start;
     
 /*    std::cout << std::endl;
     std::cout << "The final array: " << std::endl;
     for (int k = start; k < end; k++) {
     	print_point(P[k], 3);
     }
-
+    
+    std::cout << "The median point: " << std::endl;
+    print_point(P[smaller], 3);
+    
     std::cout << std::endl;
     std::cout << std::endl;
-*/    
+*/
+    
     return smaller;
 }
 
@@ -306,8 +310,8 @@ void defeatist_search(node *n, point q, int dim, point *P, double &res, int &nnp
             res = dist(q, P[n->idx], dim);
             nnp = n->idx;
         }
-    if (n->left != NULL || n->right != NULL)
-        defeatist_search( (q[n->c] <= n->m) ? n->left : n->right, q, dim, P, res, nnp);
+        if (n->left != NULL || n->right != NULL)
+            defeatist_search( (q[n->c] <= n->m) ? n->left : n->right, q, dim, P, res, nnp);
     }
 }
 
@@ -324,7 +328,18 @@ void defeatist_search(node *n, point q, int dim, point *P, double &res, int &nnp
  */
 void backtracking_search(node *n, point q, int dim, point *P, double &res, int &nnp) {
     // Exercise 3.5
-    // TODO
+    if (n != NULL) {
+        if (dist(q, P[n->idx], dim) < res) {
+            res = dist(q, P[n->idx], dim);
+            nnp = n->idx;
+        }
+        if (n->left != NULL || n->right != NULL) {  // internal node
+            if (q[n->c] - res <= n->m)  // ball intersects left side of H
+                backtracking_search (n->left, q, dim, P, res, nnp);
+            if (q[n->c] + res > n->m)  // ball intersects right side of H
+                backtracking_search (n->right, q, dim, P, res, nnp);
+        }
+    }
 }
 
 #endif  // RETRIEVAL_HPP
