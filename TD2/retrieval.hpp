@@ -152,20 +152,67 @@ double compute_median(point *P, int start, int end, int c) {
  * @param dim the dimension where the points live
  * @return the index of the median value
  */
+
 int partition(point *P, int start, int end, int c, int dim) {
+    
+/*    std::cout << "start: " << start << "    end: " << end << "    c: " << c << endl;
+    std::cout << std::endl;
+    std::cout << "The initial array: " << std::endl;
+    for (int k = start; k < end; k++) {
+    	print_point(P[k], 3);
+    }
+*/
     // Exercise 3.2
     double m = compute_median(P, start, end, c);
+    
+/*    std::cout << std::endl;
+    std::cout << "median: " << m << std::endl;
+*/    
     int idx = -1;  // this is where we store the index of the median
+    
+    // We find the last index corresponding to m between start and end
+    for (int k = start; k < end; k++) {
+    	if (P[k][c] == m) {idx = k;}
+    }
 
-    // TODO
+//    std::cout << "median index: " << idx << std::endl;
+    
+    
+    // We put the median to the left
+    std::swap(P[start], P[idx]);
+    
+    
+    // We arrange the array around idx
+    int smaller = start + 1;
+    int greater = end - 1;
+    while (smaller < greater) {
+    	if (P[greater][c] > m) {
+    		greater--;
+    	} else if (P[smaller][c] <= m) {
+    		smaller++;
+    	} else {
+    		std::swap(P[smaller], P[greater]);
+    	}
+    }
+    
+    // We place the median where it should be
+    if (smaller < end) std::swap(P[smaller], P[start]);
+    
+/*    std::cout << std::endl;
+    std::cout << "The final array: " << std::endl;
+    for (int k = start; k < end; k++) {
+    	print_point(P[k], 3);
+    }
 
-    return idx;
+    std::cout << std::endl;
+    std::cout << std::endl;
+*/    
+    return smaller;
 }
 
 typedef struct node {  // node for the kd-tree
     // Exercise 3.3
 
-    // TODO
     int c;               // coordinate for split
     double m;            // split value
     int idx;             // index of data point stored at the node
@@ -181,11 +228,15 @@ typedef struct node {  // node for the kd-tree
  */
 node *create_node(int _idx) {
     // Exercise 3.3
-
-    // TODO
     
-    // Do not forget to replace this return by a correct one!
-    return new node;
+    node *leaf = new node;
+    leaf->c = -1;
+    leaf->m = -1;
+    leaf->idx = _idx;
+    leaf->left = NULL;
+    leaf->right = NULL;
+    
+    return leaf;
 }
 
 /**
@@ -198,10 +249,14 @@ node *create_node(int _c, double _m, int _idx,
                   node *_left, node *_right) {  
     // Exercise 3.3
 
-    // TODO
+    node *n = new node;
+    n->c = _c;
+    n->m = _m;
+    n->idx = _idx;
+    n->left = _left;
+    n->right = _right;
 
-    // Do not forget to replace this return by a correct one!
-    return new node;
+    return n;
 }
 
 node* build(point *P, int start, int end, int c, int dim) {
@@ -246,7 +301,14 @@ node* build(point *P, int start, int end, int c, int dim) {
  */
 void defeatist_search(node *n, point q, int dim, point *P, double &res, int &nnp) {
     // Exercise 3.4
-    // TODO
+    if (n != NULL) {
+        if (dist(q, P[n->idx], dim) < res) {
+            res = dist(q, P[n->idx], dim);
+            nnp = n->idx;
+        }
+    if (n->left != NULL || n->right != NULL)
+        defeatist_search( (q[n->c] <= n->m) ? n->left : n->right, q, dim, P, res, nnp);
+    }
 }
 
 /**
