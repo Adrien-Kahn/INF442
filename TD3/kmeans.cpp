@@ -15,6 +15,46 @@
 #include <gtkmm/drawingarea.h>
 
 
+class point
+{
+	public:
+
+        static int d;
+        double *coords;
+        int label;
+        
+        point() {
+        	label = 0;
+        	coords = new double[d];
+        	for (int k = 0; k < d; k++) {
+        		coords[k] = 0;
+        	}
+        }
+        
+        ~point() {
+        	delete[] coords;
+        }
+        
+        void print() {
+        	for (int k = 0; k < d - 1; k++) {
+        		std::cout << coords[k] << "\t";
+        	}
+        	std::cout << coords[d - 1] << "\n";
+        }
+        
+        double squared_dist(point &q) {
+        	double s = 0;
+        	for (int k = 0; k < d; k++) {
+        		s += (coords[k] - q.coords[k]) * (coords[k] - q.coords[k]);
+        	}
+        	return s;
+        }
+        
+};
+
+int point::d = 5;
+
+
 class cloud
 {
 	private:
@@ -95,16 +135,58 @@ class cloud
 
 	double intracluster_variance()
 	{
+		double var = 0;
+		
+		for (int i = 0; i < n; i++) {
+			var += points[i].squared_dist(centers[points[i].label]);
+		}
+		
+		return var/n;
 	}
+
 
 	int set_voronoi_labels()
 	{
+		int changed = 0;
+		for (int i = 0; i < n; i++) {
+			int best_label = 0;
+			int best_dist = points[i].squared_dist(centers[0]);
+			for (int j = 1; j < k; j++) {
+				if (best_dist > points[i].squared_dist(centers[j])) {
+					best_label = j;
+					best_dist = points[i].squared_dist(centers[j]);
+				}
+			}
+			if (best_label != points[i].label) {
+				points[i].label = best_label;
+				changed++;
+			}
+		}
 		
-		return 0;
+		return changed;
 	}
 
 	void set_centroid_centers()
 	{
+		point new_centers[k];
+		int n_cluster[k];
+		for (int j = 0; j < k; j++) {n_cluster[j] = 0;}
+		
+		for (int i = 0; i < n; i++) {
+			n_cluster[points[i].label] ++;
+			for (int x = 0; x < d; x++) {
+				new_centers[points[i].label].coords[x] += points[i].coords[x];
+			}
+		}
+		
+		for (int j = 0; j < k; j++) {
+			if (n_cluster[j] != 0) {
+				for (int x = 0; x < d; x++) {
+					new_centers[j].coords[x] = new_centers[j].coords[x] / n_cluster[j];
+				}
+				set_center(new_centers[j], j);
+			}
+		}
 	}
 
 	void kmeans()
@@ -126,8 +208,25 @@ class cloud
 
 
 // test functions
-void test_point()
-{
+void test_point() {
+	
+	std::cout << "\nTest Point\n" << std::endl;
+	
+	std::cout << "\np:" << std::endl;
+	point p = point();
+	p.print();
+	*(p.coords + 2) = 5;
+	p.print();
+	
+	point q = point();
+	*q.coords = 3;
+	std::cout << "\nq:" << std::endl;
+	q.print();
+	
+	std::cout << "\nsquared distance between p and q:\t" << p.squared_dist(q) << std::endl;
+	
+	std::cout << "\n" << std::endl;
+	
 }
 
 void test_intracluster_variance()
@@ -190,7 +289,48 @@ void test_intracluster_variance()
 
 void test_kmeans()
 {
-	// TODO
+	std::cout << "\n\nTest set_voronoi_label\n" << std::endl;
+	cloud c = cloud(2, 5, 2);
+	
+	point p1, p2, p3, c1, c2;
+	p1.coords[0] = 0.1;
+	p2.coords[0] = 1.2;
+	p2.coords[1] = 3;
+	p3.coords[0] = -2.3;
+	
+	c2.coords[0] = 1;
+	c2.coords[1] = 1;
+	
+	c.add_point(p1, 1);
+	c.add_point(p2, 1);
+	c.add_point(p3, 1);
+	c.set_center(c1, 0);
+	c.set_center(c2, 1);
+	
+	std::cout << "Cloud points: " << std::endl;
+	c.get_point(0).print();
+	c.get_point(1).print();
+	c.get_point(2).print();
+	std::cout << "\nCenters: " << std::endl;
+	c.get_center(0).print();
+	c.get_center(1).print();
+	
+	std::cout << "\nSetting Voronoi labels: " << std::endl;
+	std::cout << "\nNumber of points that changed label: " << c.set_voronoi_labels() << std::endl;
+	std::cout << "New labels: " << std::endl;
+	std::cout << c.get_point(0).label << std::endl;
+	std::cout << c.get_point(1).label << std::endl;
+	std::cout << c.get_point(2).label << std::endl;
+	
+	
+	std::cout << "\n\nTest set_centroid_centers\n" << std::endl;
+
+	c.set_centroid_centers();
+	std::cout << "New centers: " << std::endl;
+	c.get_center(0).print();
+	c.get_center(1).print();
+	
+	
 }
 
 void test_init_forgy()
@@ -291,7 +431,7 @@ void test_init_random_partition()
 	// tolerance in probability
 	const double delta = 0.0625;
 
-	// dimenstion used for tests
+	// dimension used for tests
 	point::d = 1;
 
 	// temporary container
