@@ -1,78 +1,151 @@
-calories	protein	fat	sodium	fiber	carbo	sugars	potass	vitamins	shelf	weight	cups	rating	name
-70	4	1	130	10	5	6	280	25	3	1	0.33	68.403	100%_Bran_Label_3
-120	3	5	15	2	8	8	135	0	3	1	1	33.9837	100%_Natural_Bran_Label_2
-70	4	1	260	9	7	5	320	25	3	1	0.33	59.4255	All-Bran_Label_3
-50	4	0	140	14	8	0	330	25	3	1	0.5	93.7049	All-Bran_with_Extra_Fiber_Label_3
-110	2	2	200	1	14	8	-1	25	3	1	0.75	34.3848	Almond_Delight_Label_1
-110	2	2	180	1.5	10.5	10	70	25	1	1	0.75	29.5095	Apple_Cinnamon_Cheerios_Label_1
-110	2	0	125	1	11	14	30	25	2	1	1	33.1741	Apple_Jacks_Label_1
-130	3	2	210	2	18	8	100	25	3	1.33	0.75	37.0386	Basic_4_Label_0
-90	2	1	200	4	15	6	125	25	1	1	0.67	49.1203	Bran_Chex_Label_0
-90	3	0	210	5	13	5	190	25	3	1	0.67	53.3138	Bran_Flakes_Label_3
-120	1	2	220	0	12	12	35	25	2	1	0.75	18.0429	Cap'n'Crunch_Label_1
-110	6	2	290	2	17	1	105	25	1	1	1.25	50.765	Cheerios_Label_1
-120	1	3	210	0	13	9	45	25	2	1	0.75	19.8236	Cinnamon_Toast_Crunch_Label_1
-110	3	2	140	2	13	7	105	25	3	1	0.5	40.4002	Clusters_Label_0
-110	1	1	180	0	12	13	55	25	2	1	1	22.7364	Cocoa_Puffs_Label_1
-110	2	0	280	0	22	3	25	25	1	1	1	41.445	Corn_Chex_Label_1
-100	2	0	290	1	21	2	35	25	1	1	1	45.8633	Corn_Flakes_Label_1
-110	1	0	90	1	13	12	20	25	2	1	1	35.7828	Corn_Pops_Label_2
-110	1	1	180	0	12	13	65	25	2	1	1	22.3965	Count_Chocula_Label_1
-110	3	3	140	4	10	7	160	25	3	1	0.5	40.4488	Cracklin'_Oat_Bran_Label_0
-100	3	0	80	1	21	0	-1	0	2	1	1	64.5338	Cream_of_Wheat_(Quick)_Label_2
-110	2	0	220	1	21	3	30	25	3	1	1	46.8956	Crispix_Label_1
-100	2	1	140	2	11	10	120	25	3	1	0.75	36.1762	Crispy_Wheat_&_Raisins_Label_0
-100	2	0	190	1	18	5	80	25	3	1	0.75	44.3309	Double_Chex_Label_1
-110	2	1	125	1	11	13	30	25	2	1	1	32.2076	Froot_Loops_Label_1
-110	1	0	200	1	14	11	25	25	1	1	0.75	31.436	Frosted_Flakes_Label_1
-100	3	0	0	3	14	7	100	25	2	1	0.8	58.3451	Frosted_Mini-Wheats_Label_2
-120	3	2	160	5	12	10	200	25	3	1.25	0.67	40.917	Fruit_&_Fibre_Dates_Walnuts_and_Oats_Label_3
-120	3	0	240	5	14	12	190	25	3	1.33	0.67	41.0155	Fruitful_Bran_Label_3
-110	1	1	135	0	13	12	25	25	2	1	0.75	28.0258	Fruity_Pebbles_Label_1
-100	2	0	45	0	11	15	40	25	1	1	0.88	35.2524	Golden_Crisp_Label_2
-110	1	1	280	0	15	9	45	25	2	1	0.75	23.804	Golden_Grahams_Label_1
-100	3	1	140	3	15	5	85	25	3	1	0.88	52.0769	Grape_Nuts_Flakes_Label_0
-110	3	0	170	3	17	3	90	25	3	1	0.25	53.371	Grape-Nuts_Label_0
-120	3	3	75	3	13	4	100	25	3	1	0.33	45.8117	Great_Grains_Pecan_Label_2
-120	1	2	220	1	12	11	45	25	2	1	1	21.8713	Honey_Graham_Ohs_Label_1
-110	3	1	250	1.5	11.5	10	90	25	1	1	0.75	31.0722	Honey_Nut_Cheerios_Label_1
-110	1	0	180	0	14	11	35	25	1	1	1.33	28.7424	Honey-comb_Label_1
-110	2	1	170	1	17	6	60	100	3	1	1	36.5237	Just_Right_Crunchy__Nuggets_Label_1
-140	3	1	170	2	20	9	95	100	3	1.3	0.75	36.4715	Just_Right_Fruit_&_Nut_Label_0
-110	2	1	260	0	21	3	40	25	2	1	1.5	39.2411	Kix_Label_1
-100	4	2	150	2	12	6	95	25	2	1	0.67	45.3281	Life_Label_0
-110	2	1	180	0	12	12	55	25	2	1	1	26.7345	Lucky_Charms_Label_1
-100	4	1	0	0	16	3	95	25	2	1	1	54.8509	Maypo_Label_2
-150	4	3	95	3	16	11	170	25	3	1	1	37.1369	Muesli_Raisins_Dates_&_Almonds_Label_0
-150	4	3	150	3	16	11	170	25	3	1	1	34.1398	Muesli_Raisins_Peaches_&_Pecans_Label_0
-160	3	2	150	3	17	13	160	25	3	1.5	0.67	30.3134	Mueslix_Crispy_Blend_Label_0
-100	2	1	220	2	15	6	90	25	1	1	1	40.106	Multi-Grain_Cheerios_Label_1
-120	2	1	190	0	15	9	40	25	2	1	0.67	29.9243	Nut&Honey_Crunch_Label_1
-140	3	2	220	3	21	7	130	25	3	1.33	0.67	40.6923	Nutri-Grain_Almond-Raisin_Label_0
-90	3	0	170	3	18	2	90	25	3	1	1	59.6428	Nutri-grain_Wheat_Label_0
-130	3	2	170	1.5	13.5	10	120	25	3	1.25	0.5	30.4508	Oatmeal_Raisin_Crisp_Label_0
-120	3	1	200	6	11	14	260	25	3	1.33	0.67	37.8406	Post_Nat._Raisin_Bran_Label_3
-100	3	0	320	1	20	3	45	100	3	1	1	41.5035	Product_19_Label_1
-50	1	0	0	0	13	0	15	0	3	0.5	1	60.7561	Puffed_Rice_Label_2
-50	2	0	0	1	10	0	50	0	3	0.5	1	63.0056	Puffed_Wheat_Label_2
-100	4	1	135	2	14	6	110	25	3	1	0.5	49.5119	Quaker_Oat_Squares_Label_0
-100	5	2	0	2.7	-1	-1	110	0	1	1	0.67	50.8284	Quaker_Oatmeal_Label_2
-120	3	1	210	5	14	12	240	25	2	1.33	0.75	39.2592	Raisin_Bran_Label_3
-100	3	2	140	2.5	10.5	8	140	25	3	1	0.5	39.7034	Raisin_Nut_Bran_Label_0
-90	2	0	0	2	15	6	110	25	3	1	0.5	55.3331	Raisin_Squares_Label_2
-110	1	0	240	0	23	2	30	25	1	1	1.13	41.9989	Rice_Chex_Label_1
-110	2	0	290	0	22	3	35	25	1	1	1	40.5602	Rice_Krispies_Label_1
-80	2	0	0	3	16	0	95	0	1	0.83	1	68.2359	Shredded_Wheat_Label_2
-90	3	0	0	4	19	0	140	0	1	1	0.67	74.4729	Shredded_Wheat_'n'Bran_Label_2
-90	3	0	0	3	20	0	120	0	1	1	0.67	72.8018	Shredded_Wheat_spoon_size_Label_2
-110	2	1	70	1	9	15	40	25	2	1	0.75	31.2301	Smacks_Label_2
-110	6	0	230	1	16	3	55	25	1	1	1	53.1313	Special_K_Label_1
-90	2	0	15	3	15	5	90	25	2	1	1	59.364	Strawberry_Fruit_Wheats_Label_2
-110	2	1	200	0	21	3	35	100	3	1	1	38.8397	Total_Corn_Flakes_Label_1
-140	3	1	190	4	15	14	230	100	3	1.5	1	28.5928	Total_Raisin_Bran_Label_3
-100	3	1	200	3	16	3	110	100	3	1	1	46.6588	Total_Whole_Grain_Label_0
-110	2	1	250	0	21	3	60	25	3	1	0.75	39.1062	Triples_Label_1
-110	1	1	140	0	13	12	25	25	2	1	1	27.7533	Trix_Label_1
-100	3	1	230	3	17	3	115	25	1	1	0.67	49.7874	Wheat_Chex_Label_0
-100	3	1	200	3	17	3	110	25	1	1	1	51.5922	Wheaties_Label_0
-110	2	1	200	1	16	8	60	25	1	1	0.75	36.1876	Wheaties_Honey_Gold_Label_1
+s_len	s_wid	p_len	p_wid	species
+5.1	3.5	1.4	0.2	Iris-setosa_Label_1
+4.9	3	1.4	0.2	Iris-setosa_Label_1
+4.7	3.2	1.3	0.2	Iris-setosa_Label_1
+4.6	3.1	1.5	0.2	Iris-setosa_Label_1
+5	3.6	1.4	0.2	Iris-setosa_Label_1
+5.4	3.9	1.7	0.4	Iris-setosa_Label_1
+4.6	3.4	1.4	0.3	Iris-setosa_Label_1
+5	3.4	1.5	0.2	Iris-setosa_Label_1
+4.4	2.9	1.4	0.2	Iris-setosa_Label_1
+4.9	3.1	1.5	0.1	Iris-setosa_Label_1
+5.4	3.7	1.5	0.2	Iris-setosa_Label_1
+4.8	3.4	1.6	0.2	Iris-setosa_Label_1
+4.8	3	1.4	0.1	Iris-setosa_Label_1
+4.3	3	1.1	0.1	Iris-setosa_Label_1
+5.8	4	1.2	0.2	Iris-setosa_Label_1
+5.7	4.4	1.5	0.4	Iris-setosa_Label_1
+5.4	3.9	1.3	0.4	Iris-setosa_Label_1
+5.1	3.5	1.4	0.3	Iris-setosa_Label_1
+5.7	3.8	1.7	0.3	Iris-setosa_Label_1
+5.1	3.8	1.5	0.3	Iris-setosa_Label_1
+5.4	3.4	1.7	0.2	Iris-setosa_Label_1
+5.1	3.7	1.5	0.4	Iris-setosa_Label_1
+4.6	3.6	1	0.2	Iris-setosa_Label_1
+5.1	3.3	1.7	0.5	Iris-setosa_Label_1
+4.8	3.4	1.9	0.2	Iris-setosa_Label_1
+5	3	1.6	0.2	Iris-setosa_Label_1
+5	3.4	1.6	0.4	Iris-setosa_Label_1
+5.2	3.5	1.5	0.2	Iris-setosa_Label_1
+5.2	3.4	1.4	0.2	Iris-setosa_Label_1
+4.7	3.2	1.6	0.2	Iris-setosa_Label_1
+4.8	3.1	1.6	0.2	Iris-setosa_Label_1
+5.4	3.4	1.5	0.4	Iris-setosa_Label_1
+5.2	4.1	1.5	0.1	Iris-setosa_Label_1
+5.5	4.2	1.4	0.2	Iris-setosa_Label_1
+4.9	3.1	1.5	0.1	Iris-setosa_Label_1
+5	3.2	1.2	0.2	Iris-setosa_Label_1
+5.5	3.5	1.3	0.2	Iris-setosa_Label_1
+4.9	3.1	1.5	0.1	Iris-setosa_Label_1
+4.4	3	1.3	0.2	Iris-setosa_Label_1
+5.1	3.4	1.5	0.2	Iris-setosa_Label_1
+5	3.5	1.3	0.3	Iris-setosa_Label_1
+4.5	2.3	1.3	0.3	Iris-setosa_Label_1
+4.4	3.2	1.3	0.2	Iris-setosa_Label_1
+5	3.5	1.6	0.6	Iris-setosa_Label_1
+5.1	3.8	1.9	0.4	Iris-setosa_Label_1
+4.8	3	1.4	0.3	Iris-setosa_Label_1
+5.1	3.8	1.6	0.2	Iris-setosa_Label_1
+4.6	3.2	1.4	0.2	Iris-setosa_Label_1
+5.3	3.7	1.5	0.2	Iris-setosa_Label_1
+5	3.3	1.4	0.2	Iris-setosa_Label_1
+7	3.2	4.7	1.4	Iris-versicolor_Label_0
+6.4	3.2	4.5	1.5	Iris-versicolor_Label_0
+6.9	3.1	4.9	1.5	Iris-versicolor_Label_0
+5.5	2.3	4	1.3	Iris-versicolor_Label_2
+6.5	2.8	4.6	1.5	Iris-versicolor_Label_0
+5.7	2.8	4.5	1.3	Iris-versicolor_Label_2
+6.3	3.3	4.7	1.6	Iris-versicolor_Label_0
+4.9	2.4	3.3	1	Iris-versicolor_Label_2
+6.6	2.9	4.6	1.3	Iris-versicolor_Label_0
+5.2	2.7	3.9	1.4	Iris-versicolor_Label_2
+5	2	3.5	1	Iris-versicolor_Label_2
+5.9	3	4.2	1.5	Iris-versicolor_Label_2
+6	2.2	4	1	Iris-versicolor_Label_2
+6.1	2.9	4.7	1.4	Iris-versicolor_Label_0
+5.6	2.9	3.6	1.3	Iris-versicolor_Label_2
+6.7	3.1	4.4	1.4	Iris-versicolor_Label_0
+5.6	3	4.5	1.5	Iris-versicolor_Label_2
+5.8	2.7	4.1	1	Iris-versicolor_Label_2
+6.2	2.2	4.5	1.5	Iris-versicolor_Label_2
+5.6	2.5	3.9	1.1	Iris-versicolor_Label_2
+5.9	3.2	4.8	1.8	Iris-versicolor_Label_0
+6.1	2.8	4	1.3	Iris-versicolor_Label_2
+6.3	2.5	4.9	1.5	Iris-versicolor_Label_0
+6.1	2.8	4.7	1.2	Iris-versicolor_Label_2
+6.4	2.9	4.3	1.3	Iris-versicolor_Label_2
+6.6	3	4.4	1.4	Iris-versicolor_Label_0
+6.8	2.8	4.8	1.4	Iris-versicolor_Label_0
+6.7	3	5	1.7	Iris-versicolor_Label_0
+6	2.9	4.5	1.5	Iris-versicolor_Label_2
+5.7	2.6	3.5	1	Iris-versicolor_Label_2
+5.5	2.4	3.8	1.1	Iris-versicolor_Label_2
+5.5	2.4	3.7	1	Iris-versicolor_Label_2
+5.8	2.7	3.9	1.2	Iris-versicolor_Label_2
+6	2.7	5.1	1.6	Iris-versicolor_Label_0
+5.4	3	4.5	1.5	Iris-versicolor_Label_2
+6	3.4	4.5	1.6	Iris-versicolor_Label_2
+6.7	3.1	4.7	1.5	Iris-versicolor_Label_0
+6.3	2.3	4.4	1.3	Iris-versicolor_Label_2
+5.6	3	4.1	1.3	Iris-versicolor_Label_2
+5.5	2.5	4	1.3	Iris-versicolor_Label_2
+5.5	2.6	4.4	1.2	Iris-versicolor_Label_2
+6.1	3	4.6	1.4	Iris-versicolor_Label_2
+5.8	2.6	4	1.2	Iris-versicolor_Label_2
+5	2.3	3.3	1	Iris-versicolor_Label_2
+5.6	2.7	4.2	1.3	Iris-versicolor_Label_2
+5.7	3	4.2	1.2	Iris-versicolor_Label_2
+5.7	2.9	4.2	1.3	Iris-versicolor_Label_2
+6.2	2.9	4.3	1.3	Iris-versicolor_Label_2
+5.1	2.5	3	1.1	Iris-versicolor_Label_2
+5.7	2.8	4.1	1.3	Iris-versicolor_Label_2
+6.3	3.3	6	2.5	Iris-virginica_Label_0
+5.8	2.7	5.1	1.9	Iris-virginica_Label_0
+7.1	3	5.9	2.1	Iris-virginica_Label_0
+6.3	2.9	5.6	1.8	Iris-virginica_Label_0
+6.5	3	5.8	2.2	Iris-virginica_Label_0
+7.6	3	6.6	2.1	Iris-virginica_Label_0
+4.9	2.5	4.5	1.7	Iris-virginica_Label_2
+7.3	2.9	6.3	1.8	Iris-virginica_Label_0
+6.7	2.5	5.8	1.8	Iris-virginica_Label_0
+7.2	3.6	6.1	2.5	Iris-virginica_Label_0
+6.5	3.2	5.1	2	Iris-virginica_Label_0
+6.4	2.7	5.3	1.9	Iris-virginica_Label_0
+6.8	3	5.5	2.1	Iris-virginica_Label_0
+5.7	2.5	5	2	Iris-virginica_Label_0
+5.8	2.8	5.1	2.4	Iris-virginica_Label_0
+6.4	3.2	5.3	2.3	Iris-virginica_Label_0
+6.5	3	5.5	1.8	Iris-virginica_Label_0
+7.7	3.8	6.7	2.2	Iris-virginica_Label_0
+7.7	2.6	6.9	2.3	Iris-virginica_Label_0
+6	2.2	5	1.5	Iris-virginica_Label_0
+6.9	3.2	5.7	2.3	Iris-virginica_Label_0
+5.6	2.8	4.9	2	Iris-virginica_Label_0
+7.7	2.8	6.7	2	Iris-virginica_Label_0
+6.3	2.7	4.9	1.8	Iris-virginica_Label_0
+6.7	3.3	5.7	2.1	Iris-virginica_Label_0
+7.2	3.2	6	1.8	Iris-virginica_Label_0
+6.2	2.8	4.8	1.8	Iris-virginica_Label_0
+6.1	3	4.9	1.8	Iris-virginica_Label_0
+6.4	2.8	5.6	2.1	Iris-virginica_Label_0
+7.2	3	5.8	1.6	Iris-virginica_Label_0
+7.4	2.8	6.1	1.9	Iris-virginica_Label_0
+7.9	3.8	6.4	2	Iris-virginica_Label_0
+6.4	2.8	5.6	2.2	Iris-virginica_Label_0
+6.3	2.8	5.1	1.5	Iris-virginica_Label_0
+6.1	2.6	5.6	1.4	Iris-virginica_Label_0
+7.7	3	6.1	2.3	Iris-virginica_Label_0
+6.3	3.4	5.6	2.4	Iris-virginica_Label_0
+6.4	3.1	5.5	1.8	Iris-virginica_Label_0
+6	3	4.8	1.8	Iris-virginica_Label_0
+6.9	3.1	5.4	2.1	Iris-virginica_Label_0
+6.7	3.1	5.6	2.4	Iris-virginica_Label_0
+6.9	3.1	5.1	2.3	Iris-virginica_Label_0
+5.8	2.7	5.1	1.9	Iris-virginica_Label_0
+6.8	3.2	5.9	2.3	Iris-virginica_Label_0
+6.7	3.3	5.7	2.5	Iris-virginica_Label_0
+6.7	3	5.2	2.3	Iris-virginica_Label_0
+6.3	2.5	5	1.9	Iris-virginica_Label_0
+6.5	3	5.2	2	Iris-virginica_Label_0
+6.2	3.4	5.4	2.3	Iris-virginica_Label_0
+5.9	3	5.1	1.8	Iris-virginica_Label_0

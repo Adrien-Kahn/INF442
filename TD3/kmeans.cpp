@@ -191,18 +191,75 @@ class cloud
 
 	void kmeans()
 	{
+		init_forgy();
+		while (set_voronoi_labels() > 0) {
+			set_centroid_centers();
+		}
 	}
 
 	void init_forgy()
 	{
+		// The labels of the centers will allow us to keep track of which data point
+		// they correspond to in order to avoid collisions		
+		for (int j = 0; j < k; j++) {
+			int p;
+			int b = 1;
+			while (b == 1) {
+				b = 0;
+				p = rand() % n;
+				for (int i = 0; i < j; i++) {
+					if (get_center(i).label == p) {
+						b = 1;
+					}
+				}
+			}
+			set_center(get_point(p), j);
+			get_center(j).label = p;
+		}
 	}
 
 	void init_plusplus()
 	{
+		// Initializing the first center
+		int p = rand() % n;
+		set_center(get_point(p), 0);
+		
+		// Initializing the others
+		for (int j = 1; j < k; j++) {
+			// Computing the normalization constant of the distribution
+			double normalization = 0;
+			for (int i = 0; i < n; i++) {
+				normalization += aux_dist_centers(get_point(i), j);
+			}
+			// Sampling a point from the distribution
+			double p = (double) rand() / RAND_MAX;
+			int x = -1;
+			while (p > 0) {
+				x++;
+				p -= aux_dist_centers(get_point(x), j) / normalization;
+			}
+			set_center(get_point(x), j);
+		}
 	}
+	
+	// Returns the distance between point p and the centers up to index j (not included)
+	double aux_dist_centers(point &p, int j) {
+		double min = p.squared_dist(get_center(0));
+		for (int i = 1; i < j; i++) {
+			min = std::min(min, p.squared_dist(get_center(0)));
+		}
+		return min;
+	}
+	
 
 	void init_random_partition()
 	{
+		// We assign each point to a random cluster
+		for (int i = 0; i < n; i++) {
+			get_point(i).label = rand() % k;
+		}
+		// We make the centers centroids
+		set_centroid_centers();
 	}
 };
 
@@ -288,7 +345,10 @@ void test_intracluster_variance()
 }
 
 void test_kmeans()
-{
+{	
+
+	{
+
 	std::cout << "\n\nTest set_voronoi_label\n" << std::endl;
 	cloud c = cloud(2, 5, 2);
 	
@@ -330,6 +390,50 @@ void test_kmeans()
 	c.get_center(0).print();
 	c.get_center(1).print();
 	
+	std::cout << "\n\nTest kmeans\n" << std::endl;
+	}
+
+	{
+
+	std::cout << "\nReintializing the cloud: \n" << std::endl;
+	
+	cloud c = cloud(2, 5, 2);
+	
+	point p1, p2, p3, c1, c2;
+	p1.coords[0] = 0.1;
+	p2.coords[0] = 1.2;
+	p2.coords[1] = 3;
+	p3.coords[0] = -2.3;
+	
+	c2.coords[0] = 1;
+	c2.coords[1] = 1;
+	
+	c.add_point(p1, 1);
+	c.add_point(p2, 1);
+	c.add_point(p3, 1);
+	c.set_center(c1, 0);
+	c.set_center(c2, 1);
+	
+	std::cout << "Cloud points: " << std::endl;
+	c.get_point(0).print();
+	c.get_point(1).print();
+	c.get_point(2).print();
+	std::cout << "\nCenters: " << std::endl;
+	c.get_center(0).print();
+	c.get_center(1).print();
+	
+	std::cout << "\nRunning kmeans: " << std::endl;
+	c.kmeans();
+	
+	std::cout << "\nCloud points: " << std::endl;
+	c.get_point(0).print();
+	c.get_point(1).print();
+	c.get_point(2).print();
+	std::cout << "\nCenters: " << std::endl;
+	c.get_center(0).print();
+	c.get_center(1).print();
+	
+	}
 	
 }
 
