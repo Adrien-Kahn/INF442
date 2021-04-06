@@ -75,6 +75,12 @@ int main(int argc, char *argv[]) {
          << count_compare << endl;
 
     g->start_iteration();
+    while ((e = g->get_next()) != NULL) {
+//        std::cout << e->get_length() << std::endl;
+    }
+
+
+    g->start_iteration();
     edge *e1 = g->get_next();
     edge *e2;
 
@@ -105,7 +111,7 @@ int main(int argc, char *argv[]) {
 
         cout << "Min distance between points:\t" << min << endl;
         cout << "Max distance between points:\t" << max << endl;
-        cout << "Last distnace between points:\t" << e1->get_length() << endl;
+        cout << "Last distance between points:\t" << e1->get_length() << endl;
     }
 
     delete g;

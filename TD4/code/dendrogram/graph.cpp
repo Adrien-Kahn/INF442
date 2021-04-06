@@ -12,8 +12,20 @@
 graph::graph(cloud &_c) {
     n = _c.get_n();
     size = n * (n - 1) / 2;
-    // TODO: Exercise 3.1
-
+    
+    edges = new edge* [size];
+    edge **edge_iterator = edges;
+    
+    for (int i = 0; i < n; i++) {
+    	for (int j = i + 1; j < n; j++) {
+    		edge *e = new edge(i, j, _c.get_point(i).dist(_c.get_point(j)));
+    		*edge_iterator = e;
+    		edge_iterator++;
+    	}
+    }
+    
+    std::sort(edges, edges + size, edge::compare);
+    
     iterator_pos = 0;
 }
 
@@ -27,16 +39,18 @@ graph::graph(long _n, std::string _node_names[], double** dist_matrix) {
 }
 
 graph::~graph() {
-    // TODO: Exercise 3.1
-
+    
+    edge *e;
+    start_iteration();
+    while ((e = get_next()) != NULL) {
+        delete e;
+    }
     delete[] edges;
     delete[] node_names;
 }
 
 long graph::get_num_edges() {
-    // TODO: Exercise 3.1
-
-    return 0;
+    return size;
 }
 
 std::string& graph::get_name(int i) {
@@ -53,9 +67,13 @@ void graph::start_iteration() {
 }
 
 edge *graph::get_next() {
-    // TODO: Exercise 3.1
-
-    return NULL;
+    
+    if (iterator_pos == size) return NULL;
+    
+    edge *eptr = *(edges + iterator_pos);
+    iterator_pos++;
+    
+    return eptr;
 }
 
 graph* graph::load_matrix(std::ifstream &is) {

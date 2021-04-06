@@ -7,9 +7,7 @@
 
 cloud::cloud(int _d, int _nmax, int _k) {
     d = _d;
-    // To be used once set_dim is implemented
-    //point::set_dim(_d);
-    point::d = _d;
+    point::set_dim(_d);
     n = 0;
     k = _k;
 
