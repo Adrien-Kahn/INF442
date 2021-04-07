@@ -32,7 +32,22 @@ graph::graph(cloud &_c) {
 graph::graph(long _n, std::string _node_names[], double** dist_matrix) {
     n = _n;
     size = n * (n - 1) / 2;
-    // TODO: Exercise 3.1
+    node_names = new std::string[n];
+    node_names = _node_names;
+    
+    edges = new edge* [size];
+    edge **edge_iterator = edges;
+    
+    for (int i = 0; i < n; i++) {
+    	for (int j = i + 1; j < n; j++) {
+    		edge *e = new edge(i, j, dist_matrix[i][j]);
+    		*edge_iterator = e;
+    		edge_iterator++;
+    	}
+    }
+    
+    std::sort(edges, edges + size, edge::compare);
+
 
     iterator_pos = 0;
 
@@ -46,7 +61,7 @@ graph::~graph() {
         delete e;
     }
     delete[] edges;
-    delete[] node_names;
+    //delete[] node_names;
 }
 
 long graph::get_num_edges() {

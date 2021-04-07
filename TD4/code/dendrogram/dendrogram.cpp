@@ -58,25 +58,51 @@ dendrogram::~dendrogram() {
 int dendrogram::find(int i) {
     assert(0 <= i && i < g->get_num_nodes());
     int result = i;
-
-    // TODO: Exercise 3.2
+    while (parent[result] != -1) {
+    	result = parent[result];
+    }
     return result;
 }
 
-void dendrogram::merge(edge *e) {
-    // TODO: Exercise 3.2
-    // Plan:
-    // 1. find the representatives
-    // 2. choose the highest
-    // 3. adjust parent, left, and down
-    // 4. update ranks
-    // 5. update heights
+void dendrogram::merge(edge *e) {	
+	
+	int i = find(e->get_p1());
+	int j = find(e->get_p2());
+	
+	if (i == j) return;
+	
+	int high, low;
+	
+	if (rank[i] > rank[j]) {
+		high = i;
+		low = j;
+	} else if (rank[i] < rank[j]) {
+		high = j;
+		low = i;
+	} else {
+		high = std::max(i, j);
+		low = std::min(i, j);
+	}
+	
+	parent[low] = high;
+	
+	if (rank[low] == rank[high]) rank[high]++;
+	
+	height[low] = e->get_length() / 2;
+	
+	left[low] = down[high];
+	
+	down[high] = low;
+	
 }
 
 void dendrogram::build() {
+    edge *e;
     g->start_iteration();
-
-    // TODO: Exercise 2.2
+    while ((e = g->get_next()) != NULL) {
+        merge(e);
+    }
+    
 }
 
 double dendrogram::get_dendro_height() {
@@ -85,15 +111,29 @@ double dendrogram::get_dendro_height() {
 
 void dendrogram::set_clusters(int i, double h) {
     assert(0 <= i && i < g->get_num_nodes());
-
-    // TODO: Exercise 4.1
+    
+    int result = i;
+    while (height[result] <= h && parent[result] != -1) {
+    	result = parent[result];
+    }
+    
+    clusters[i] = result;
+    
+    if (result == i) {
+    	total_clusters++;
+    }
 }
 
 void dendrogram::set_clusters(double h) {
-    if (cut_height != h) {
+/*    if (cut_height != h) {
         cut_height = h;
         set_clusters(find(0), h);
+    }*/
+    
+    for (int k = 0; k < g->get_num_nodes(); k++) {
+    	set_clusters(k, h);
     }
+    
 }
 
 int dendrogram::_count_ns_clusters() {
