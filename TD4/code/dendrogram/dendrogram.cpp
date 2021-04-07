@@ -112,34 +112,47 @@ double dendrogram::get_dendro_height() {
 void dendrogram::set_clusters(int i, double h) {
     assert(0 <= i && i < g->get_num_nodes());
     
-    int result = i;
-    while (height[result] <= h && parent[result] != -1) {
-    	result = parent[result];
-    }
+    int node_parent = parent[i];
     
-    clusters[i] = result;
-    
-    if (result == i) {
+    if (node_parent == -1 || height[i] > h) {
+    	clusters[i] = i;
     	total_clusters++;
+    } else {
+    	clusters[i] = clusters[node_parent];
     }
+    
+    int node_down = down[i];
+    int node_left = left[i];
+    
+    if (node_down != -1) set_clusters(node_down, h);
+    if (node_left != -1) set_clusters(node_left, h);
+    
 }
 
 void dendrogram::set_clusters(double h) {
-/*    if (cut_height != h) {
+    if (cut_height != h) {
         cut_height = h;
         set_clusters(find(0), h);
-    }*/
-    
-    for (int k = 0; k < g->get_num_nodes(); k++) {
-    	set_clusters(k, h);
     }
-    
 }
 
 int dendrogram::_count_ns_clusters() {
     int count = 0;
     
-    // TODO: Exercise 4.2
+    int n = g->get_num_nodes();
+    int scl[n];
+    
+    for (int k = 0; k < n; k++) {
+    	scl[k] = 0;
+    }
+    
+    for (int k = 0; k < n; k++) {
+    	if (clusters[k] != k) scl[clusters[k]] = 1;
+    }
+    
+    for (int k = 0; k < n; k++) {
+    	count += scl[k];
+    }
 
     return count;
 }
@@ -161,10 +174,15 @@ void dendrogram::clear_clusters() {
 
 double dendrogram::get_cluster_height(int cluster) {
     assert(0 <= cluster && cluster < g->get_num_nodes());
-
-    // TODO: Exercise 4.3
-
-    return 0; // Unreachable
+    
+    double h = 0;
+    int n = g->get_num_nodes();
+    
+    for (int k = 0; k < n; k++) {
+    	if (clusters[k] == clusters[cluster] && k != clusters[cluster]) h = std::max(h, height[k]);
+    }
+    
+    return h;
 }
 
 /******** Significant heights ********/
