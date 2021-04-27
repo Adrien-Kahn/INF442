@@ -7,11 +7,12 @@
 class cloud {
 	int n;
 	int nmax;	// maximum possible number of points
-	point *points;
 
 public:
 	cloud(int _d, int _nmax);
 	~cloud();
+	
+	point *points;
 
 	// getters
 	int get_n();

@@ -23,6 +23,7 @@ void point::print()
 
 	for (int j = 1; j < d; j++)
 		cout << ' ' << coords[j];
+	std::cout << std::endl;
 }
 
 double point::dist(point &q)
