@@ -1,4 +1,4 @@
-EIGEN=/usr/local/eigen-3.3.7
+EIGEN=../../eigen-3.3.9
 ANN_INCLUDE=../../ann_1.1.2/include
 ANN_LIB=../../ann_1.1.2/lib
 
