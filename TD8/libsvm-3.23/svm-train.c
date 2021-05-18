@@ -4,6 +4,7 @@
 #include <ctype.h>
 #include <errno.h>
 #include "svm.h"
+#include "eval.h"
 #define Malloc(type,n) (type *)malloc((n)*sizeof(type))
 
 void print_null(const char *s) {}
@@ -25,6 +26,7 @@ void exit_with_help()
 	"	2 -- radial basis function: exp(-gamma*|u-v|^2)\n"
 	"	3 -- sigmoid: tanh(gamma*u'*v + coef0)\n"
 	"	4 -- precomputed kernel (kernel values in training_set_file)\n"
+	"	5 -- rational-quadratic kernel (with coef0)\n"
 	"-d degree : set degree in kernel function (default 3)\n"
 	"-g gamma : set gamma in kernel function (default 1/num_features)\n"
 	"-r coef0 : set coef0 in kernel function (default 0)\n"
@@ -97,9 +99,10 @@ int main(int argc, char **argv)
 	}
 
 	if(cross_validation)
-	{
-		do_cross_validation();
-	}
+        {
+                double cv =  binary_class_cross_validation(&prob, &param, nr_fold);
+                printf("Cross Validation = %g%%\n",100.0*cv);
+        }
 	else
 	{
 		model = svm_train(&prob,&param);

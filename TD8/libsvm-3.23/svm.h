@@ -23,7 +23,7 @@ struct svm_problem
 };
 
 enum { C_SVC, NU_SVC, ONE_CLASS, EPSILON_SVR, NU_SVR };	/* svm_type */
-enum { LINEAR, POLY, RBF, SIGMOID, PRECOMPUTED }; /* kernel_type */
+enum { LINEAR, POLY, RBF, SIGMOID, PRECOMPUTED, RQK }; /* kernel_type */
 
 struct svm_parameter
 {
@@ -31,7 +31,7 @@ struct svm_parameter
 	int kernel_type;
 	int degree;	/* for poly */
 	double gamma;	/* for poly/rbf/sigmoid */
-	double coef0;	/* for poly/sigmoid */
+	double coef0;	/* for poly/sigmoid/RQK */
 
 	/* these are for training only */
 	double cache_size; /* in MB */

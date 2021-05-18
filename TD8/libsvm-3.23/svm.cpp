@@ -240,6 +240,10 @@ private:
 	{
 		return exp(-gamma*(x_square[i]+x_square[j]-2*dot(x[i],x[j])));
 	}
+	double kernel_rqk(int i, int j) const
+	{
+		return coef0 / (x_square[i]+x_square[j]-2*dot(x[i],x[j]) + coef0);
+	}
 	double kernel_sigmoid(int i, int j) const
 	{
 		return tanh(gamma*dot(x[i],x[j])+coef0);
@@ -265,6 +269,9 @@ Kernel::Kernel(int l, svm_node * const * x_, const svm_parameter& param)
 		case RBF:
 			kernel_function = &Kernel::kernel_rbf;
 			break;
+		case RQK:
+			kernel_function = &Kernel::kernel_rqk;
+			break;
 		case SIGMOID:
 			kernel_function = &Kernel::kernel_sigmoid;
 			break;
@@ -275,7 +282,7 @@ Kernel::Kernel(int l, svm_node * const * x_, const svm_parameter& param)
 
 	clone(x,x_,l);
 
-	if(kernel_type == RBF)
+	if(kernel_type == RBF || kernel_type == RQK)
 	{
 		x_square = new double[l];
 		for(int i=0;i<l;i++)
@@ -362,6 +369,47 @@ double Kernel::k_function(const svm_node *x, const svm_node *y,
 			}
 
 			return exp(-param.gamma*sum);
+		}
+		case RQK:
+		{
+			double sum = 0;
+			while(x->index != -1 && y->index !=-1)
+			{
+				if(x->index == y->index)
+				{
+					double d = x->value - y->value;
+					sum += d*d;
+					++x;
+					++y;
+				}
+				else
+				{
+					if(x->index > y->index)
+					{
+						sum += y->value * y->value;
+						++y;
+					}
+					else
+					{
+						sum += x->value * x->value;
+						++x;
+					}
+				}
+			}
+
+			while(x->index != -1)
+			{
+				sum += x->value * x->value;
+				++x;
+			}
+
+			while(y->index != -1)
+			{
+				sum += y->value * y->value;
+				++y;
+			}
+
+			return param.coef0 / (sum + param.coef0);
 		}
 		case SIGMOID:
 			return tanh(param.gamma*dot(x,y)+param.coef0);
@@ -2641,7 +2689,7 @@ static const char *svm_type_table[] =
 
 static const char *kernel_type_table[]=
 {
-	"linear","polynomial","rbf","sigmoid","precomputed",NULL
+	"linear","polynomial","rbf","rqk","sigmoid","precomputed",NULL
 };
 
 int svm_save_model(const char *model_file_name, const svm_model *model)
@@ -2666,7 +2714,7 @@ int svm_save_model(const char *model_file_name, const svm_model *model)
 	if(param.kernel_type == POLY || param.kernel_type == RBF || param.kernel_type == SIGMOID)
 		fprintf(fp,"gamma %.17g\n", param.gamma);
 
-	if(param.kernel_type == POLY || param.kernel_type == SIGMOID)
+	if(param.kernel_type == POLY || param.kernel_type == SIGMOID || param.kernel_type == RQK)
 		fprintf(fp,"coef0 %.17g\n", param.coef0);
 
 	int nr_class = model->nr_class;
@@ -3061,6 +3109,7 @@ const char *svm_check_parameter(const svm_problem *prob, const svm_parameter *pa
 	if(kernel_type != LINEAR &&
 	   kernel_type != POLY &&
 	   kernel_type != RBF &&
+	   kernel_type != RQK &&
 	   kernel_type != SIGMOID &&
 	   kernel_type != PRECOMPUTED)
 		return "unknown kernel type";
